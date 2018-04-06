@@ -64,14 +64,23 @@ session_start ()
 								<div>
 									<div>
 									<div>
-										<? php
+										
 										<select class="form-control" name="regiao" id="tabregiao">
-                                            $vregiao = ($_POST['vregiao']);
+                                           
+                                            <option>LESTE</option>
+                                            <option>NORTE</option>
+                                            <option>OESTE</option>
+                                            <option>SUL</option>
+                                          <? php
+                                          $vregiao = $_POST ['regiao']
+
+
+                                          ?>
 										</select>
 									</br>
 								</br>
 										<select class="form-control" name="bairro">
-											
+										<? php	
 											
 $serverName = "databaseseniorscare.database.windows.net";
 $connectionOptions = array(
