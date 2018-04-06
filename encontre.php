@@ -1,7 +1,5 @@
 <? php
 session_start ()
-
-require_once (newconexao.php);
 ?>
 
 
@@ -66,21 +64,32 @@ require_once (newconexao.php);
 								<div>
 									<div>
 									<div>
-										<select class="form-control" name="regiao">
-											<option value=""></option>									
-											<option value="volvo">Zona Norte</option>
-											<option value="saab">Zona Sul</option>
-											<option value="fiat">Zona Oeste</option>
-											<option value="audi">Zona Leste</option>
+										<select class="form-control" name="regiao" id="tabregiao">
+										 <? php
+											
+$serverName = "databaseseniorscare.database.windows.net";
+$connectionOptions = array(
+    "Database" => "DB_SENIORS_CARE",
+    "Uid" => "admcare",
+    "PWD" => "00@2018care"
+);
+//Establishes the connection
+$conn = sqlsrv_connect($serverName, $connectionOptions);
+$tsql= select regiao sn_localidade order by name;
+$getResults= sqlsrv_query($conn, $tsql);
+if ($getResults == FALSE)
+    echo (sqlsrv_errors());
+sqlsrv_free_stmt($getResults);
+while ($dados = sqlsrv_fetch_array($getResults))
+{ ?>
+	<option value=" <?php echo $dados[$getResults] ?> "></option>
+}
+
 										</select>
 									</br>
 								</br>
 										<select class="form-control" name="bairro">
-											<option value=""></option>									
-											<option value="volvo">Capão Redondo</option>
-											<option value="saab">Campo Limpo</option>
-											<option value="fiat">Itpecerica</option>
-											<option value="audi">Valo Velho</option>
+											
 										</select>
 									</br>
 									<form action="lista.php" method="post" class="form-inline">
