@@ -64,8 +64,14 @@ session_start ()
 								<div>
 									<div>
 									<div>
+										<? php
 										<select class="form-control" name="regiao" id="tabregiao">
-										 <? php
+                                            $vregiao = ($_POST['vregiao']);
+										</select>
+									</br>
+								</br>
+										<select class="form-control" name="bairro">
+											
 											
 $serverName = "databaseseniorscare.database.windows.net";
 $connectionOptions = array(
@@ -74,22 +80,14 @@ $connectionOptions = array(
     "PWD" => "00@2018care"
 );
 //Establishes the connection
-$conn = sqlsrv_connect($serverName, $connectionOptions);
-$tsql= select regiao sn_localidade order by name;
-$getResults= sqlsrv_query($conn, $tsql);
-if ($getResults == FALSE)
-    echo (sqlsrv_errors());
-sqlsrv_free_stmt($getResults);
-while ($dados = sqlsrv_fetch_array($getResults))
-{ ?>
-	<option value=" <?php echo $dados[$getResults] ?> "></option>
-}
+$result = sqlsrv_query($connectionOptions, 
+             "CALL psnbuscaregiao($vregiao);") or die("Erro na query da procedure: " . sqlsrv_error()); 
+while ($row = sqlsrv_fetch_array($result)) {   
+              echo  $row[0] . <option value='".$result."'</option>
+                      
+          }
 
-										</select>
-									</br>
-								</br>
-										<select class="form-control" name="bairro">
-											
+				?>
 										</select>
 									</br>
 									<form action="lista.php" method="post" class="form-inline">
