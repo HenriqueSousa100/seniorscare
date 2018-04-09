@@ -65,34 +65,34 @@ session_start ()
 									<div>
 									<div>
 										
-										<select class="form-control" name="regiao" id="tabregiao">
+										<select class="form-control" name="regiao" id="regiao">
                                            
+                                            <option>Selecione</option>
                                             <option>LESTE</option>
                                             <option>NORTE</option>
                                             <option>OESTE</option>
                                             <option>SUL</option>
-                                          <? php
-                                          $vregiao = $_POST ['regiao']
-
-
-                                          ?>
+                                        
 										</select>
 									</br>
 								</br>
 										<select class="form-control" name="bairro">
 										<? php	
-											
+										$vregiao = $_POST ['regiao']
+										$bairro = $_POST ['bairro']	
 $serverName = "databaseseniorscare.database.windows.net";
 $connectionOptions = array(
     "Database" => "DB_SENIORS_CARE",
     "Uid" => "admcare",
     "PWD" => "00@2018care"
+    $conn = $serverName,$connectionOptions
 );
 //Establishes the connection
-$result = sqlsrv_query($connectionOptions, 
-             "CALL psnbuscaregiao($vregiao);") or die("Erro na query da procedure: " . sqlsrv_error()); 
+$bairro = $result
+$result = sqlsrv_query($conn, 
+             "CALL psnbuscaregiao('$vregiao');") or die("Erro na query da procedure: " . sqlsrv_error()); 
 while ($row = sqlsrv_fetch_array($result)) {   
-              echo  $row[0] . <option value='".$result."'</option>
+              echo  $row[1] . <option value='".$result."'</option>
                       
           }
 
