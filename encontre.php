@@ -65,39 +65,58 @@ session_start ()
 									<div>
 									<div>
 										
-										<select class="form-control" name="regiao" id="regiao">
+										<form action="" method="post">	
+										<select class="form-control" name="regiao" id="regiao" onchange="myFunction()">
                                            
                                             <option>Selecione</option>
                                             <option>LESTE</option>
                                             <option>NORTE</option>
                                             <option>OESTE</option>
                                             <option>SUL</option>
-                                        
-										</select>
+
+
+
+
+                                        </select>
+
+<script>
+												function myFunction() {
+												    var vregiao = document.getElementById("regiao").value;
+												   // document.write(x);
+												    <? php
+												    $vregiao = getElementById("regiao")
+
+												    ?>
+														
+												    }
+												     
+</script>
+
+
+
 									</br>
 								</br>
 										<select class="form-control" name="bairro">
 										<? php	
-										$vregiao = $_POST ['regiao']
-										$bairro = $_POST ['bairro']	
+										
 $serverName = "databaseseniorscare.database.windows.net";
 $connectionOptions = array(
     "Database" => "DB_SENIORS_CARE",
     "Uid" => "admcare",
-    "PWD" => "00@2018care"
-    $conn = $serverName,$connectionOptions
-);
+    "PWD" => "00@2018care");
+
 //Establishes the connection
-$bairro = $result
+$conn = $serverName,$connectionOptions
 $result = sqlsrv_query($conn, 
-             "CALL psnbuscaregiao('$vregiao');") or die("Erro na query da procedure: " . sqlsrv_error()); 
+             "CALL psnbuscaregiao ($vregiao)";) or die("Erro na query da procedure: " . sqlsrv_error()); 
 while ($row = sqlsrv_fetch_array($result)) {   
-              echo  $row[1] . <option value='".$result."'</option>
+              echo "<option>".$row['regiao']."</option>";
                       
           }
 
 				?>
 										</select>
+									</form>
 									</br>
 									<form action="lista.php" method="post" class="form-inline">
 									<button type="livedemo" name="encontrar" class="btn btn-primary btn-lg" required="required">Submeter
