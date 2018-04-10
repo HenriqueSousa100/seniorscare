@@ -1,5 +1,5 @@
-<? php
-session_start ()
+<?php
+session_start();
 ?>
 
 
@@ -78,43 +78,29 @@ session_start ()
 
 
                                         </select>
-
-<script>
+											<script>
 												function myFunction() {
 												    var vregiao = document.getElementById("regiao").value;
-												   // document.write(x);
-												    <? php
-												    $vregiao = getElementById("regiao")
-
-												    ?>
-														
-												    }
-												     
-</script>
-
-
-
+												    
+												    var xhr = new XMLHttpRequest();
+													xhr.open('GET', 'conexaodb.php?regiao=' + vregiao);
+													xhr.onload = function() {
+													    if (xhr.status === 200) {
+															//document.getElementById("bairro").appendChild(xhr.responseText);
+													        console.log(xhr.responseText);
+													    }
+													    else {
+													        console.log('Request failed.  Returned status of ' + xhr.status);
+															console.log('Request failed.  Returned message ' + xhr.responseText);
+													    }
+													};
+													xhr.send();
+												}
+											</script>
 									</br>
 								</br>
-										<select class="form-control" name="bairro">
-										<? php	
-										
-$serverName = "databaseseniorscare.database.windows.net";
-$connectionOptions = array(
-    "Database" => "DB_SENIORS_CARE",
-    "Uid" => "admcare",
-    "PWD" => "00@2018care");
+										<select class="form-control" name="bairro" id="bairro">
 
-//Establishes the connection
-$conn = $serverName,$connectionOptions
-$result = sqlsrv_query($conn, 
-             "CALL psnbuscaregiao ($vregiao)";) or die("Erro na query da procedure: " . sqlsrv_error()); 
-while ($row = sqlsrv_fetch_array($result)) {   
-              echo "<option>".$row['regiao']."</option>";
-                      
-          }
-
-				?>
 										</select>
 									</form>
 									</br>
