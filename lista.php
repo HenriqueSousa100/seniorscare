@@ -1,20 +1,13 @@
-<?php
-session_start()
-
-?>
-
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<title>Bem vido ao SeniorsCare</title>
+	<title>Bem vindo ao SeniorsCare</title>
 
-	
+    
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/animate.css">
@@ -59,46 +52,58 @@ session_start()
 
 				<div class="carousel-inner">
 					<div class="item active">						
-						<img src="img/6.jpg" class="img-responsive" alt=""> 
+						<img src="img/idoso.jpg" class="img-responsive" alt=""> 
 						<div class="carousel-caption">
 							<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.5s">								
-								<h2 class ="test">Cuidadores disponíveis.</h2>
+								<h2 class ="test">Cuidadores disponíveis:</h2>
 								<div>
-									<div>
-									<div>
-										<select class="form-control" name="nomes">
-											<option value=""></option>									
-											<option value="volvo">Zona Norte</option>
-											<option value="saab">Zona Sul</option>
-											<option value="fiat">Zona Oeste</option>
-											<option value="audi">Zona Leste</option>
-										</select>
-									</br>
-										<label class="form-control" name="regiao">
-										</label>
-									</br>
-									<label class="form-control" name="bairro">
-										</label>
-									</br>
-									<label class="form-control" name="telefone">
-										</label>
-									</br>
-									<label class="form-control" name="email">
-										</label>
-									<form action="encontre.php" method="post" class="form-inline">
-									<button type="livedemo" name="voltar" class="btn btn-primary btn-lg" required="required">Voltar
-										</button>
+								<div>
+								<div>
+									
+				<?php
+				session_start();
+                require('conexaodb.php');
 
+                $regiao = $_POST['regiao'];
+                $sql="execute psnbuscapro '".$regiao."'";
+                $res = sqlsrv_query($conn, $sql);
 
-									</div>
-								</div>
-							</div>
+                $profissional = Array();
+                while( $profissional = sqlsrv_fetch_array($res)){
+					
+   echo "<div style='overflow:auto; color:#000000; width:1000px; text-align:center; font-family:arial; font-size:20px; line-height:100%'>";
+   echo "<table class='table'>";
+   echo "<tbody>";
+   echo "<tr class='header'>";
+   echo "<td>Nome</td>";
+   echo "<td>Região</td>";
+   echo "<td>Bairro</td>";
+   echo "<td>Celular</td>";
+   echo "<td>Email</td>";
+   echo "</tr>";
+   echo "<tr class='altRow'>";
+   echo "<td>".$profissional['nome']."</td>";
+   echo "<td>".$profissional['regiao']."</td>";
+   echo "<td>".$profissional['bairro']."</td>";
+   echo "<td>".$profissional['cel']."</td>";
+   echo "<td>".$profissional['email']."</td>";
+   echo "</tr>"; 
+   echo "</tbody></table></div>";
+	
+               	
+					 }
+						
+				?>
+					
+			<form action="encontre.php" method="post" class="form-inline">
+			<button type="livedemo" name="voltar" class="btn btn-primary btn-lg" required="required">Voltar</button>
 
-
-
-						</div> <!--/#carousel-slider-->
-					</div><!--/#about-slider-->
-				</div><!--/#slider-->
+					</div>
+					</div>
+				</div>
+			</div> <!--/#carousel-slider-->
+		</div><!--/#about-slider-->
+	</div><!--/#slider-->
 
 				<div id="feature">
 					<div class="container">
@@ -134,9 +139,8 @@ session_start()
 
 
 						</footer>
-						<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-						<script src="js/jquery-2.1.1.min.js"></script>		
-						<!-- Include all compiled plugins (below), or include individual files as needed -->
+						
+						<script src="js/jquery-2.1.1.min.js"></script>
 						<script src="js/bootstrap.min.js"></script>	
 						<script src="js/parallax.min.js"></script>
 						<script src="js/wow.min.js"></script>

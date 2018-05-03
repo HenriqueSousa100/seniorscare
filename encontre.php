@@ -1,16 +1,14 @@
 <?php
 session_start();
 ?>
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<title>Bem vido ao SeniorsCare</title>
+	<title>Bem vindo ao SeniorsCare</title>
 
 	
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -38,7 +36,7 @@ session_start();
 					<ul class="nav navbar-nav">
 						<li type="button" class="default" action="index.php" ><a href="index.php">Inicio</a></li>
 						<li><a href="#feature">Sobre Nós</a></li>
-						<li type="button" class="default" action="duvida.php" ><a href="duvida.php">Dúvidas?</a></li>
+						<li type="button" class="default" action="duvida.php" ><a href="duvida.php">Dúvidas ?</a></li>
 
 					</ul>
 				</div>
@@ -48,99 +46,65 @@ session_start();
 	<div class="slider">		
 		<div id="about-slider">
 			<div id="carousel-slider" class="carousel slide" data-ride="carousel">
-				<!-- Indicators -->
+				
 				<ol class="carousel-indicators visible-xs">
 					<li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
 					<li data-target="#carousel-slider" data-slide-to="1"></li>
 					<li data-target="#carousel-slider" data-slide-to="2"></li>
 				</ol>
-
 				<div class="carousel-inner">
 					<div class="item active">						
-						<img src="img/6.jpg" class="img-responsive" alt=""> 
+						<img src="img/cuidador.jpg" class="img-responsive" alt=""> 
 						<div class="carousel-caption">
 							<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.5s">								
-								<h2 class ="test">Por favor,Preencha os campos abaixo.</h2>
+								<h2 class ="test">Escolha uma região:</h2>
 								<div>
 									<div>
-									<div>
-										
-										<form action="" method="post">	
-										<select class="form-control" name="regiao" id="regiao" onchange="myFunction()">
-                                           
-                                            <option>Selecione</option>
-                                            <option>LESTE</option>
-                                            <option>NORTE</option>
-                                            <option>OESTE</option>
-                                            <option>SUL</option>
-
-
-
-
-                                        </select>
-											<script>
-												function myFunction() {
-												    var vregiao = document.getElementById("regiao").value;
-												    
-												    var xhr = new XMLHttpRequest();
-													xhr.open('GET', 'conexaodb.php?regiao=' + vregiao);
-													xhr.onload = function() {
-													    if (xhr.status === 200) {
-															//document.getElementById("bairro").appendChild(xhr.responseText);
-													        console.log(xhr.responseText);
-													    }
-													    else {
-													        console.log('Request failed.  Returned status of ' + xhr.status);
-															console.log('Request failed.  Returned message ' + xhr.responseText);
-													    }
-													};
-													xhr.send();
-												}
-											</script>
+									<div class="page-header">
 									</br>
-								</br>
-										<select class="form-control" name="bairro" id="bairro">
-
-										</select>
-									</form>
-									</br>
-									<form action="lista.php" method="post" class="form-inline">
-									<button type="livedemo" name="encontrar" class="btn btn-primary btn-lg" required="required">Submeter
-										</button>
-
-
+														
+				  <form  method="POST" action="lista.php" id="formregiao">					
+					
+							
+							  </br>
+							   
+				<font color="#0BA9F9">Centro</font><input type="radio" name="regiao" value="centro" required="required"/>	
+				<font color="#0BA9F9">Leste</font><input type="radio" name="regiao" value="leste" required="required"/>
+				<font color="#0BA9F9">Norte</font><input type="radio" name="regiao" value="norte" required="required"/>
+				<font color="#0BA9F9">Oeste</font><input type="radio" name="regiao" value="oeste" required="required"/>
+				<font color="#0BA9F9">Sul</font><input   type="radio" name="regiao" value="sul"   required="required"/>			
+						 </br>
+						 </br>
+			 <button type="submit" name="buscar" class="btn btn-primary btn-lg"value="enviar" required="required">Buscar
+			 </button>
+						 
+                    </form>
+								
+                                  
 									</div>
 								</div>
 							</div>
-
-
-
 						</div> <!--/#carousel-slider-->
 					</div><!--/#about-slider-->
 				</div><!--/#slider-->
-
+				
 				<div id="feature">
-					<div class="container">
-						<div class="row">
-							<div class="text-center">
-								<h3>Cuide de quem voce ama</h3>
-								<p>Com a SeniorsCare você sempre terá um profissional para cuidar de quem voce ama. Garantimos a qualidade do serviço com os melhores cuidadadores de idosos, a nossa intenção é fazer com que você ache um profissional de maneira simples e rápida.</p>
-
-							</div>
-							<div class="text-center" data-wow-offset="0" data-wow-delay="0.3s">
-								<div class="text-center">
-									<div class="hi-icon-wrap hi-icon-effect">
-										<i class="fa fa-heart-o"></i>
-										<h2>Lealdade e comprometimento.</h2>
-										<p>Todos os idosos são tratados com o máximo respeito e carinho.</p>
-									</div>
-								</div>
-							</div>
-
-
-
-
-
+		<div class="container">
+			<div class="row">
+				<div class="text-center">
+					<h3>Cuide de quem voce ama</h3>
+					<p>Com a SeniorsCare você sempre terá um profissional para cuidar de quem voce ama. Garantimos a qualidade do serviço com os melhores cuidadadores de idosos, a nossa intenção é fazer com que você ache um profissional de maneira simples e rápida.</p>
+				
+				</div>
+				<div class="text-center" data-wow-offset="0" data-wow-delay="0.3s">
+					<div class="text-center">
+						<div class="hi-icon-wrap hi-icon-effect">
+							<i class="fa fa-heart-o"></i>
+							<h2>Lealdade e comprometimento.</h2>
+							<p>Todos os idosos são tratados com o máximo respeito e carinho.</p>
+						</div>
+					</div>
+				</div>
 
 
 
@@ -153,9 +117,9 @@ session_start();
 
 
 						</footer>
-						<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+						
 						<script src="js/jquery-2.1.1.min.js"></script>		
-						<!-- Include all compiled plugins (below), or include individual files as needed -->
+						
 						<script src="js/bootstrap.min.js"></script>	
 						<script src="js/parallax.min.js"></script>
 						<script src="js/wow.min.js"></script>
